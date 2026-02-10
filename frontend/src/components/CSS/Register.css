@@ -1,0 +1,50 @@
+.Register-card {
+  background: white;
+  width: 400px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 
+  0 10px 25px rgba(0, 0, 0, 0.08),
+  0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.Register-card h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.form-group input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.forgot {
+  color: blue;
+  cursor: pointer;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+

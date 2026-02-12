@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import "./CSS/Register.css";
-import { Link } from "react-router-dom";
-const Register = () => { 
+import { Link,useNavigate } from "react-router-dom"; 
+import Usercontext from "../../Contexts/Usercontext"; 
 
+const Register = () => { 
+  
+  const{user,setuser}=useContext(Usercontext);
   const[password,setpassword]=useState(""); 
   const[name,setname]=useState(""); 
   const[email,setemail]=useState(""); 
-  const [loading,setloading]=useState(false);    
+  const [loading,setloading]=useState(false);     
+  const navigate=useNavigate();
 const valuser={password,name,email};
   const handleSubmit=async(e)=>{ 
     e.preventDefault(); 
@@ -22,7 +26,13 @@ const valuser={password,name,email};
        const result=await response.json();  
        console.log(result); 
        if(response.ok) 
-        alert("registered succesfully"); 
+       {
+         alert("registered succesfully you may now login");
+         console.log(result); 
+         localStorage.setItem("token",result.token); 
+         setuser(result.user); 
+         navigate("/user/home",{replace:true});
+       } 
       else 
       alert(result.message);
 

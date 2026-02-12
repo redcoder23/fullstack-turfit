@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./CSS/Login.css";
-import {Link} from "react-router-dom"; 
+import {Link, replace} from "react-router-dom"; 
 import { useNavigate } from "react-router-dom";
 
 import Usercontext from "../../Contexts/Usercontext";
@@ -33,7 +33,7 @@ const Login = () => {
       console.log(data); 
       localStorage.setItem("token",data.token); 
       setuser(data.user); 
-      navigate("/user/home");
+      navigate("/user/home",{replace:true});
        alert("Login successful!"); 
      }
      else 

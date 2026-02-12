@@ -7,7 +7,7 @@ const Register = () => {
   const[name,setname]=useState(""); 
   const[email,setemail]=useState(""); 
   const [loading,setloading]=useState(false);    
-const user={password,name,email};
+const valuser={password,name,email};
   const handleSubmit=async(e)=>{ 
     e.preventDefault(); 
     try
@@ -17,7 +17,7 @@ const user={password,name,email};
          headers:{ 
            "Content-Type":"application/json" 
          },  
-         body:JSON.stringify(user),
+         body:JSON.stringify(valuser),
        });   
        const result=await response.json();  
        console.log(result); 

@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./CSS/Login.css";
-import {Link} from "react-router-dom";
+import {Link} from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+
+import Usercontext from "../../Contexts/Usercontext";
 const Login = () => {  
   
   const[email,setemail]=useState("");
   const[password,setpassword]=useState("");
   const[name,setname]=useState(""); 
   const[loading,setloading]=useState(false) ; 
-  const [signed,setsigned]=useState(false); 
-  const user={ 
+  const [signed,setsigned]=useState(false);   
+  const{setuser}=useContext(Usercontext); 
+  const valuser={ 
     email,password,name
   } ; 
-
+ const navigate=useNavigate();
   const handleSubmit=async(e)=>{  
     e.preventDefault() ; 
     setloading(true);  
@@ -21,13 +25,15 @@ const Login = () => {
       headers:{ 
         "Content-Type":"application/json",
       } , 
-      body:JSON.stringify(user),
+      body:JSON.stringify(valuser),
      }) ;  
-      
-     console.log(response); 
-     const data=await response.json(); 
+           const data=await response.json(); 
      if(response.ok) 
-     {
+     {    
+      console.log(data); 
+      localStorage.setItem("token",data.token); 
+      setuser(data.user); 
+      navigate("/user/home");
        alert("Login successful!"); 
      }
      else 

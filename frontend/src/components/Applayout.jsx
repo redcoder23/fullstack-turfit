@@ -17,7 +17,8 @@ function Applayout() {
   return ( 
     <div className="applayout-container">
        <div className={ishome?"full-section":"left-section"}>
-       <Routes> 
+       <Routes>  
+        <Route path="/" element={<Login/>}/>
         <Route path="/user/login" element={<Login/>}/>
         <Route path="/user/register" element={<Register/>}/>   
       <Route path="/user/home" element={<ProtectedRoute><Home/> </ProtectedRoute>}/>

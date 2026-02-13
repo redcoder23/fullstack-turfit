@@ -29,10 +29,10 @@ const login= async (req, res) => {
             return res.status(400).json({ message: 'All fileds are required' });
         const user = await User.findOne({ email });
         if (!user)
-            return res.status(401).json({ message: 'No such users exists' });
+            return res.status(401).json({ message: 'Invalid credentials' });
         const match = await bcrypt.compare(password, user.password);
         if (!match)
-            return res.status(401).json({ message: "Invalid password" });
+            return res.status(401).json({ message: "Invalid credentials" });
         const token = jwt.sign( 
             {id:user._id}, 
             "mysecretkey", 

@@ -8,4 +8,6 @@ frontend/node_modules/
 backend/.env
 
 # logs
-npm-debug.log*
+npm-debug.log* 
+
+backend/insert.js

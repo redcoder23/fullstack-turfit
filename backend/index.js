@@ -9,6 +9,7 @@ app.use(cors());
 connecttomongouri(); 
 
 app.use('/api/user',require('./routes/UserRoutes/UserRouter'))
+app.use("/api/turfs", require("./Controllers/Turfcontrollers"));
 
 app.listen(PORT,()=>{ 
     console.log(`server is Running on ${PORT}`);

@@ -12,7 +12,7 @@ const  bookingSchema=new mongoose.Schema({
         reqiuired:true,
      },
      date:{ 
-        type:String, 
+        type:Date, 
         required:true,
      },
      slot:{ 
@@ -22,5 +22,9 @@ const  bookingSchema=new mongoose.Schema({
     },  
     {timestamps:true}
 ); 
+bookingSchema.index(
+    { turf: 1, date: 1, slot: 1 },
+    { unique: true }
+);
 
 module.exports=mongoose.model("Booking",bookingSchema)
